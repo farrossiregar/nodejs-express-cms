@@ -1,0 +1,32 @@
+<%- include('layout'); -%>
+
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Articles</h3>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% articles.forEach(article => { %>
+                        <tr>
+                            <td><%= article.title %></td>
+                            <td>
+                                <a href="/articles/<%= article.id %>/edit" class="btn btn-warning btn-sm">Edit</a>
+                                <form action="/articles/<%= article.id %>?_method=DELETE" method="POST" style="display:inline;">
+                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
